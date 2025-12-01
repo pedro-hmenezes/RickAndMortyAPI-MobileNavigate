@@ -18,7 +18,7 @@ import {
   Searchbar
 } from 'react-native-paper';
 
-// --- 1. INTERFACES (TIPOS DE DADOS) ---
+// 1- INTERFACES (TIPOS DE DADOS)
 interface Character {
   id: number;
   name: string;
@@ -32,7 +32,7 @@ interface Episode {
   id: number;
   name: string;
   air_date: string;
-  episode: string; // Ex: "S01E01"
+  episode: string; // Ex:"S01E01"
 }
 
 interface Location {
@@ -43,25 +43,25 @@ interface Location {
   residents: string[];
 }
 
-// --- 2. TEMA ---
+// TEMA
 const theme = {
   ...MD3LightTheme,
   colors: {
     ...MD3LightTheme.colors,
-    primary: '#00b5cc', // Azul Rick
-    secondary: '#b2df28', // Verde Portal
+    primary: '#00b5cc', // Azul
+    secondary: '#b2df28', // Verde 
     background: '#ffffff',
     surface: '#f8f9fa',
   },
 };
 
-// --- 3. NAVEGAÇÃO ---
+// NAVEGAÇÃO
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
 
-// --- 4. TELAS ---
+// 4- TELAS
 
-// === TELA 1: PERSONAGENS (Já validada) ===
+// TELA 1 PERSONAGENS
 function CharactersScreen({ navigation }: any) {
   const [data, setData] = React.useState<Character[]>([]);
   const [loading, setLoading] = React.useState(true);
@@ -134,7 +134,7 @@ function CharactersScreen({ navigation }: any) {
   );
 }
 
-// === TELA 2: EPISÓDIOS (NOVA!) ===
+// TELA 2 EPISODIOS
 function EpisodesScreen() {
   const [data, setData] = React.useState<Episode[]>([]);
   const [loading, setLoading] = React.useState(true);
@@ -187,7 +187,7 @@ function EpisodesScreen() {
   );
 }
 
-// === TELA 3: LOCAIS (NOVA!) ===
+// TELA 3 LOCAIS
 function LocationsScreen() {
   const [data, setData] = React.useState<Location[]>([]);
   const [loading, setLoading] = React.useState(true);
@@ -208,7 +208,6 @@ function LocationsScreen() {
     return () => clearTimeout(time);
   }, [search]);
 
-  // Define ícone baseado no tipo do lugar
   const getIcon = (type: string) => {
     if (type === 'Planet') return 'earth';
     if (type === 'Space station') return 'space-station';
@@ -250,7 +249,7 @@ function LocationsScreen() {
   );
 }
 
-// === TELA DETALHES (Mantida) ===
+// TELA DE DETALHES
 function DetailsScreen({ route, navigation }: any) {
   const { item } = route.params as { item: Character };
   const statusColor = item.status === 'Alive' ? '#55cc44' : item.status === 'Dead' ? '#d63d2e' : '#9e9e9e';
@@ -280,7 +279,7 @@ function DetailsScreen({ route, navigation }: any) {
   );
 }
 
-// --- 5. NAVEGAÇÃO PRINCIPAL ---
+// 5- NAVEGAÇÃO PRINCIPAL
 function TabsNavigation() {
   return (
     <Tabs.Navigator 
@@ -325,7 +324,7 @@ export default function App() {
   );
 }
 
-// --- 6. ESTILOS ---
+// 6- ESTILOS
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f0f2f5' },
   filterArea: {
